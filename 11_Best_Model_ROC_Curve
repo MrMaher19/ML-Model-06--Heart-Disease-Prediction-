@@ -1,0 +1,31 @@
+## Best Model ROC Curve : -
+
+      from sklearn.metrics import roc_curve, roc_auc_score
+      roc_data = {}
+      
+      for model_name, model in best_models.items():
+          y_pred_proba = model.predict_proba(xtest)[:, 1]
+      
+          fpr, tpr, thresholds = roc_curve(ytest, y_pred_proba)
+      
+          auc_score = roc_auc_score(ytest, y_pred_proba)
+      
+          roc_data[model_name] = {
+              'fpr': fpr,
+              'tpr': tpr,
+              'auc': auc_score
+          }
+      
+      print("ROC metrics calculated for all models.")
+      plt.figure(figsize=(10, 8))
+      
+      for model_name, data in roc_data.items():
+          plt.plot(data['fpr'], data['tpr'], label=f'{model_name} (AUC = {data["auc"]:.2f})')
+      
+      plt.plot([0, 1], [0, 1], 'k--', label='Random Classifier')
+      plt.xlabel('False Positive Rate')
+      plt.ylabel('True Positive Rate')
+      plt.title('ROC Curves for Classification Models')
+      plt.legend(loc='lower right')
+      plt.grid(True)
+      plt.show()
