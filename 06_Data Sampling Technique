@@ -1,0 +1,31 @@
+## Data Sampling Technique : -
+
+
+  # Before Applying SMOTE :
+      death_event_counts = ytrain['DEATH_EVENT'].value_counts()
+      print(death_event_counts)
+      plt.figure(figsize=(6, 4))
+      sns.barplot(x=death_event_counts.index, y=death_event_counts.values)
+      plt.title('Distribution of DEATH_EVENT')
+      plt.xlabel('DEATH_EVENT')
+      plt.ylabel('Count')
+      plt.xticks(ticks=[0, 1], labels=['No Death Event (0)', 'Death Event (1)'])
+      plt.show()
+
+
+  # Using SMOTE samplig technique to balance the target data :
+      smote = SMOTE(random_state=42)
+      xtrain,ytrain = smote.fit_resample(xtrain,ytrain)
+      ytrain.value_counts()
+
+      
+  # After Applying SMOTE :
+      death_event_counts = ytrain['DEATH_EVENT'].value_counts()
+      print(death_event_counts)
+      plt.figure(figsize=(6, 4))
+      sns.barplot(x=death_event_counts.index, y=death_event_counts.values)
+      plt.title('Distribution of DEATH_EVENT')
+      plt.xlabel('DEATH_EVENT')
+      plt.ylabel('Count')
+      plt.xticks(ticks=[0, 1], labels=['No Death Event (0)', 'Death Event (1)'])
+      plt.show()
