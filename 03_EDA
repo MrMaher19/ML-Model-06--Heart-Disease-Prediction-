@@ -1,0 +1,6 @@
+# EDA :-
+
+      df.duplicated()
+      df.isna().sum()
+      df.info()
+      df.describe()
