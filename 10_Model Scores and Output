@@ -1,0 +1,19 @@
+## Model Scores and Output : -
+
+      best_models = {}
+      for name,model_info in models.items():
+        grid = GridSearchCV(
+            estimator = model_info["model"],
+            param_grid = model_info["params"],
+            cv = 5,
+            scoring = "accuracy",
+            n_jobs = -1
+        )
+        final_model = grid.fit(xtrain,ytrain)
+        best_models[name] = final_model.best_estimator_ # Store the best estimator
+        print(f"Model Name : {model_info["model"]}")
+        print(f"Model Train Score  : {final_model.score(xtrain,ytrain)}")
+        print(f"Model Test Score : {final_model.score(xtest,ytest)}")
+        print(f"Model Best Estimators are: {final_model.best_estimator_}")
+        print(f"Model best params are : {final_model.best_params_}")
+        print(f"<----------------------------------------------------------------------------->")
