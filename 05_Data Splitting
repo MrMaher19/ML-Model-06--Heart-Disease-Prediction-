@@ -1,0 +1,5 @@
+## Data Splitting: -
+
+      x = df.drop("DEATH_EVENT",axis=1)
+      y = df[["DEATH_EVENT"]]
+      xtrain,xtest,ytrain,ytest = train_test_split(x,y,train_size = 0.8,random_state = 42)
