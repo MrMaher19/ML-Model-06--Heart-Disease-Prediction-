@@ -1,0 +1,4 @@
+# Load Dataset : -
+
+      df = pd.read_csv("/content/drive/MyDrive/Datasets/heart_failure.csv")
+      df.head()
