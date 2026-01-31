@@ -1,0 +1,6 @@
+## Feature Scaling : -
+
+        standard_scaling = StandardScaler()
+        continous_columns = ["age","creatinine_phosphokinase","ejection_fraction","platelets","serum_creatinine","serum_sodium","time"]
+        xtrain[continous_columns] = standard_scaling.fit_transform(xtrain[continous_columns])
+        xtest[continous_columns] = standard_scaling.transform(xtest[continous_columns])
